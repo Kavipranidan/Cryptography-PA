@@ -1,0 +1,47 @@
+1. Time Complexity of  Miller–Rabin Based Method
+
+The algorithm computes the n-th prime by:
+Checking all integers from 2 up to the n-th prime
+
+Using the Miller–Rabin primality test as the detector
+
+Breakdown
+(a) Number of integers tested
+ The n-th prime is approximately:
+p_n ≈ n * log(n)
+
+So we test about n log n numbers.
+
+(b) Cost of one Miller–Rabin test
+Let:
+b = log(n) = number of bits of the numbers being tested
+
+t = number of Miller–Rabin rounds (we use t = 10)
+
+Each Miller–Rabin test takes approximately:
+O(t * b^3)
+because modular exponentiation is the dominant operation.
+
+(c) Total time complexity
+Total work = (numbers tested) × (work per MR test)
+T(n) = O( (n log n) * t * (log n)^3 )
+
+Simplified:
+Final Complexity:  O( t * n * (log n)^4 )
+
+This is polynomial time and very efficient.
+
+2. Time Complexity of Willans’ Formula
+Willans’ formula involves:
+An outer summation that goes up to 2^n
+
+An inner expression that contains factorials (j-1)!
+
+The cost of evaluating a factorial-based prime detector is at least proportional to j
+
+Lower bound:
+Total work = sum(j from 1 to 2^n) of O(j)
+           = O( 2^(2n) )
+
+This is exponential time in n.
+
